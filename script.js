@@ -1,7 +1,6 @@
-function generateTrackingHistory() {
+function generateTrackingHistory(startDate) {
     let trackingHistory = [];
-    let startDate = new Date();
-
+    
     let locations = [
         "Los Angeles, CA", "Phoenix, AZ", "Dallas, TX",
         "Memphis, TN", "Washington, DC", "Philadelphia, PA",
@@ -16,16 +15,20 @@ function generateTrackingHistory() {
 
     let progressValues = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
+    let today = new Date();
+    
     for (let i = 0; i < locations.length; i++) {
         let newDate = new Date(startDate);
         newDate.setDate(startDate.getDate() + i);
 
-        trackingHistory.push({
-            date: newDate.toDateString(),
-            location: locations[i],
-            status: statuses[i],
-            progress: progressValues[i]
-        });
+        if (newDate <= today) {
+            trackingHistory.push({
+                date: newDate.toDateString(),
+                location: locations[i],
+                status: statuses[i],
+                progress: progressValues[i]
+            });
+        }
     }
 
     return trackingHistory;
@@ -42,7 +45,7 @@ function trackPackage() {
     document.getElementById("trackingResult").classList.remove("hidden");
 
     if (!trackingData[trackingNumber]) {
-        trackingData[trackingNumber] = generateTrackingHistory();
+        trackingData[trackingNumber] = generateTrackingHistory(new Date("2024-02-01")); // Set the start date
     }
 
     const updates = trackingData[trackingNumber];
