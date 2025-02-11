@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USPS Tracking®</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="nav-bar">
+            <img src="usps-logo.png" alt="USPS Logo" class="logo">
+            <h1>USPS Tracking®</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="tracking-section">
+            <h2>Search or Track Packages</h2>
+            <input type="text" id="trackingInput" placeholder="Enter Tracking Number">
+            <button onclick="trackPackage()">Track</button>
+        </section>
+
+        <section id="trackingResult" class="hidden">
+            <h3>Tracking Details</h3>
+            <p id="trackingStatus"></p>
+            <div class="progress-bar-container">
+                <div id="progressBar"></div>
+            </div>
+            <table id="trackingTable"></table>
+        </section>
+
+        <section class="quick-links">
+            <div class="link-box">Click-N-Ship®</div>
+            <div class="link-box">Stamps & Supplies</div>
+            <div class="link-box">Informed Delivery®</div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
